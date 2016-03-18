@@ -1,4 +1,5 @@
 EESchema Schematic File Version 2
+LIBS:dual source-rescue
 LIBS:power
 LIBS:device
 LIBS:transistors
@@ -135,7 +136,7 @@ F 1 "LED_RED" H 2950 3300 50  0000 C CNN
 F 2 "freetronics_footprints:LED-0805" H 2950 3550 24  0000 C CNN
 F 3 "" H 2950 3400 60  0000 C CNN
 	1    2950 3400
-	0    1    1    0   
+	0    -1   -1   0   
 $EndComp
 Text Label 5300 1800 0    60   ~ 0
 VIN
@@ -148,7 +149,7 @@ F 1 "LED_GREEN" H 2450 3300 50  0000 C CNN
 F 2 "freetronics_footprints:LED-0805" H 2450 3550 24  0000 C CNN
 F 3 "" H 2450 3400 60  0000 C CNN
 	1    2450 3400
-	0    1    1    0   
+	0    -1   -1   0   
 $EndComp
 $Comp
 L R R202
@@ -185,21 +186,21 @@ Charging current\nIr = 252mA max
 $Comp
 L GND #PWR015
 U 1 1 56417FB3
-P 7450 4100
-F 0 "#PWR015" H 7450 3850 50  0001 C CNN
-F 1 "GND" H 7450 3950 50  0000 C CNN
-F 2 "" H 7450 4100 60  0000 C CNN
-F 3 "" H 7450 4100 60  0000 C CNN
-	1    7450 4100
+P 7450 4200
+F 0 "#PWR015" H 7450 3950 50  0001 C CNN
+F 1 "GND" H 7450 4050 50  0000 C CNN
+F 2 "" H 7450 4200 60  0000 C CNN
+F 3 "" H 7450 4200 60  0000 C CNN
+	1    7450 4200
 	-1   0    0    -1  
 $EndComp
 $Comp
 L MOSFET_P Q203
 U 1 1 5641832A
 P 8400 2600
-F 0 "Q203" V 8200 2450 60  0000 R CNN
-F 1 "FDN340P" V 8300 2450 60  0000 R CNN
-F 2 "freetronics_footprints:SOT23_FET" V 8100 2300 24  0000 C CNN
+F 0 "Q203" V 8750 2700 60  0000 R CNN
+F 1 "FDN340P" V 8850 2800 60  0000 R CNN
+F 2 "freetronics_footprints:SOT23_FET" V 8650 2600 24  0000 C CNN
 F 3 "" H 8400 2600 60  0000 C CNN
 	1    8400 2600
 	0    -1   -1   0   
@@ -222,9 +223,11 @@ F 3 "" H 10250 2500 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L LM193 U202
+L LM193-RESCUE-dual_source U202
 U 1 1 5642B796
 P 7350 3550
+AR Path="/5642B796" Ref="U202"  Part="1" 
+AR Path="/56E80626/5642B796" Ref="U202"  Part="1" 
 F 0 "U202" H 7500 3700 60  0000 C CNN
 F 1 "MCP6002" H 7550 3350 60  0000 C CNN
 F 2 "freetronics_footprints:SO08_4mm" H 7050 3300 24  0000 C CNN
@@ -233,9 +236,11 @@ F 3 "" H 7350 3550 60  0000 C CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L LM193 U202
+L LM193-RESCUE-dual_source U202
 U 2 1 5642B7E1
 P 8900 3550
+AR Path="/5642B7E1" Ref="U202"  Part="2" 
+AR Path="/56E80626/5642B7E1" Ref="U202"  Part="2" 
 F 0 "U202" H 9050 3700 60  0000 C CNN
 F 1 "MCP6002" H 9100 3350 60  0000 C CNN
 F 2 "freetronics_footprints:SO08_4mm" H 8900 3550 60  0001 C CNN
@@ -384,7 +389,7 @@ Wire Wire Line
 	2950 3050 2950 3200
 Connection ~ 2950 3850
 Wire Wire Line
-	6850 2100 6850 3550
+	6850 2100 6850 3750
 Wire Wire Line
 	2450 3850 3400 3850
 Wire Wire Line
@@ -392,7 +397,7 @@ Wire Wire Line
 Wire Wire Line
 	2450 3600 2450 3850
 Wire Wire Line
-	4950 4300 4950 4500
+	4950 4500 4950 4300
 Connection ~ 4950 4500
 Wire Wire Line
 	5850 2500 8200 2500
@@ -409,7 +414,7 @@ Connection ~ 10250 1800
 Wire Wire Line
 	10250 2300 10250 2500
 Wire Wire Line
-	7450 4100 7450 3950
+	7450 4200 7450 3950
 Wire Wire Line
 	9050 2500 9050 1800
 Wire Wire Line
@@ -487,9 +492,9 @@ Wire Wire Line
 	5450 3400 5450 3600
 Connection ~ 5450 3550
 Wire Wire Line
-	5450 4100 5450 4500
+	5450 4500 5450 4100
 Connection ~ 5450 4500
-Text Notes 6000 4650 0    59   ~ 0
+Text Notes 5550 5250 0    59   ~ 0
 NTC thermistor\nplaced under battery holder.\n\nCharging cut off @ 38.5C\nwhen using specified thermistor.
 Wire Wire Line
 	2700 1800 2700 2500
@@ -536,8 +541,44 @@ Connection ~ 4150 4500
 Connection ~ 3950 4500
 Wire Wire Line
 	4050 2450 4050 1800
-Text HLabel 5850 3150 3    60   Input ~ 0
+Text HLabel 5850 2500 1    60   Input ~ 0
 VBAT
 Wire Wire Line
-	5850 3150 5850 2500
+	5850 2500 5850 3150
+$Comp
+L R R?
+U 1 1 56EBE55C
+P 6850 3900
+F 0 "R?" V 6930 3900 50  0000 C CNN
+F 1 "100K" V 6850 3900 50  0000 C CNN
+F 2 "" V 6780 3900 50  0000 C CNN
+F 3 "" H 6850 3900 50  0000 C CNN
+	1    6850 3900
+	1    0    0    -1  
+$EndComp
+Connection ~ 6850 3550
+Wire Wire Line
+	6850 4050 6850 4100
+Wire Wire Line
+	6850 4100 7450 4100
+Connection ~ 7450 4100
+$Comp
+L R R?
+U 1 1 56EBECD6
+P 8750 2800
+F 0 "R?" V 8830 2800 50  0000 C CNN
+F 1 "100K" V 8750 2800 50  0000 C CNN
+F 2 "" V 8680 2800 50  0000 C CNN
+F 3 "" H 8750 2800 50  0000 C CNN
+	1    8750 2800
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	8750 2650 8750 2500
+Connection ~ 8750 2500
+Wire Wire Line
+	8750 2950 8750 3050
+Wire Wire Line
+	8750 3050 8400 3050
+Connection ~ 8400 3050
 $EndSCHEMATC
