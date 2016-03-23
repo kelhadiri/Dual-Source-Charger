@@ -1,3 +1,4 @@
+
 [submodule "freetronics_kicad_library"]
 	path = freetronics_kicad_library
-	url = git@github.com:freetronics/freetronics_kicad_library.git
+	url = https://github.com/freetronics/freetronics_kicad_library.git
